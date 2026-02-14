@@ -1,55 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Mensagem Secreta ❤️</title>
-<style>
-body {
-    background-color: #111;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
+  <meta charset="UTF-8">
+  <title>Mensagem Importante</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      color: white;
+    }
 
-button {
-    padding: 20px 40px;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    background: crimson;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
+    .card {
+      background: rgba(20,20,20,0.9);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255,0,80,0.4);
+      width: 90%;
+      max-width: 400px;
+    }
 
-button:hover {
-    background: #ff2e63;
-}
+    h1 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      min-height: 60px;
+    }
 
-#mensagem {
-    margin-top: 30px;
-    font-size: 24px;
-}
-</style>
+    button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      background: #ff0050;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff3377;
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(255,0,80,0.4); }
+      50% { box-shadow: 0 0 25px rgba(255,0,80,0.8); }
+      100% { box-shadow: 0 0 10px rgba(255,0,80,0.4); }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 
-<div>
-    <h1>Clique se tiver coragem 😏</h1>
-    <button onclick="mostrarMensagem()">Abrir surpresa</button>
-    <div id="mensagem"></div>
-</div>
+  <div class="card">
+    <h1 id="typeText"></h1>
+    <button onclick="reveal()">Clique se tiver coragem 😏</button>
+  </div>
 
-<script>
-function mostrarMensagem() {
-    document.getElementById("mensagem").innerHTML =
-    "Posso te roubar um beijo... ou hoje eu posso ir além? 😈❤️";
-}
-</script>
+  <script>
+    const text = "Tenho uma pergunta importante pra você...";
+    let i = 0;
+    const speed = 60;
+
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typeText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    function reveal() {
+      document.getElementById("typeText").innerHTML =
+        "Posso gozar na sua boca hoje? 😈❤️";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    setInterval(createHeart, 600);
+    typeWriter();
+  </script>
 
 </body>
 </html>
