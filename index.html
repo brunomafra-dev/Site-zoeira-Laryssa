@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mensagem Secreta ❤️</title>
+<style>
+body {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+button {
+    padding: 20px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background: crimson;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff2e63;
+}
+
+#mensagem {
+    margin-top: 30px;
+    font-size: 24px;
+}
+</style>
+</head>
+<body>
+
+<div>
+    <h1>Clique se tiver coragem 😏</h1>
+    <button onclick="mostrarMensagem()">Abrir surpresa</button>
+    <div id="mensagem"></div>
+</div>
+
+<script>
+function mostrarMensagem() {
+    document.getElementById("mensagem").innerHTML =
+    "Posso te roubar um beijo... ou hoje eu posso ir além? 😈❤️";
+}
+</script>
+
+</body>
+</html>
